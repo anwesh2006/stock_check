@@ -1,7 +1,8 @@
 name: Stock Checker
+
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "* * * * *"   # runs every minute (for testing)
   workflow_dispatch:
 
 jobs:
@@ -18,10 +19,10 @@ jobs:
         python-version: "3.10"
 
     - name: Install dependencies
-      run: pip install requests
+      run: pip install -r requirements.txt
 
     - name: Run script
       run: python app.py
       env:
-        TOKEN: ${{ secrets.TOKEN }}
+        BOT_TOKEN: ${{ secrets.TOKEN }}
         CHAT_ID: ${{ secrets.CHAT_ID }}
